@@ -1,6 +1,8 @@
 import UIKit
-import XCPlayground
+import PlaygroundSupport
 
 let a = CircleWaveView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
 a.layer.contentsScale = 10
-XCPlaygroundPage.currentPage.liveView = a
+
+PlaygroundPage.current.needsIndefiniteExecution = true
+PlaygroundPage.current.liveView = a

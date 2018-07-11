@@ -22,29 +22,31 @@
 import UIKit
 
 public class BaseDisplayView: UIView {
-    public var displayLink: CADisplayLink?
-    
-    public override func awakeFromNib() {
-        super.awakeFromNib()
-        self.setup()
-    }
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setup()
-    }
+  public var displayLink: CADisplayLink?
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.setup()
-    }
-    
-    public func setup() {
-        self.displayLink = CADisplayLink(target: self, selector: #selector(update))
-        self.displayLink?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
-    }
-    
-    public func update() {
+  public override func awakeFromNib() {
+    super.awakeFromNib()
+    self.setup()
+  }
 
-    }
+  public override init(frame: CGRect) {
+    super.init(frame: frame)
+    self.setup()
+  }
+
+  public required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    self.setup()
+  }
+
+  public func setup() {
+
+    self.displayLink = CADisplayLink(target: self, selector: #selector(update))
+    self.displayLink?.add(to: RunLoop.current, forMode: .common)
+  }
+
+  @objc
+  public func update() {
+
+  }
 }
